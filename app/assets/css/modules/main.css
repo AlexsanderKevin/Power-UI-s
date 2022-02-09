@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    display: grid;
+    grid-template-columns: .5fr 7fr 1fr;
+    gap: 50px;
+    background: #242526;
+}

@@ -1,0 +1,12 @@
+{
+    "name": "power-ui",
+    "version": "1.0",
+    "description": "Power BI graphs interface",
+    "main": "server.js",
+    "scripts":{
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "node-static": "0.7.11"
+    }
+}
