@@ -25,6 +25,7 @@ export function createGraphContainer(title, url, id){
 
     const graphFrame = document.createElement('iframe')
     graphFrame.setAttribute('src', url)
+    graphFrame.setAttribute('title', title)
 
     container.appendChild(header)
     container.appendChild(graphFrame)
