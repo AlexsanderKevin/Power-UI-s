@@ -3,9 +3,10 @@ import fillGraphSection from "./graph-elements.js";
 import initNav from './nav.js'
 
 export default async function handleJSON(){
-    const fetchGraphs = await fetch('../../../json/graphics.json')
+    const fetchGraphs = await fetch('json-database/graphics.json')
     const graphsJSON = await fetchGraphs.json()
     const graphsArray = Array.from(graphsJSON)
+    // const graphsArray = JSON.parse(graphsJSON)
 
     const containers = graphsArray.reduce( (containers, item, index) => {
         const nav = fillNavContainer(item)

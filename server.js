@@ -7,6 +7,6 @@ http.createServer((req, res) => {
     req.addListener('end', function(){
         path.serve(req,res)
     }).resume()
-}).listen(5500)
+}).listen(5505)
 
 console.log('server running...')

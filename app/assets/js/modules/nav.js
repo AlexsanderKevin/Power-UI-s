@@ -18,6 +18,5 @@ export default function initNav(navMenu, graphSection){
             }
         })
     }
-
     radios.forEach( radio => radio.addEventListener('click', handleClick))
 }
