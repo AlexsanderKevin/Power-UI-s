@@ -1,44 +1,52 @@
-function createGraphHeader(title){
-    const headerContainer = document.createElement('div')
-    headerContainer.setAttribute('class', 'graph-header')
+export default class Graph{
+    constructor(title, url){
+        this.title = title,
+        this.url = url,
+        this.id = title.toLowerCase().replace(' ', '-')
+    }
 
-    const graphTitle = document.createElement('span')
-    graphTitle.setAttribute('class', 'graph-title')
-    graphTitle.innerText = title
+    header(){
+        const headerContainer = document.createElement('div')
+        headerContainer.setAttribute('class', 'graph-header')
 
-    const divider = document.createElement('div')
-    divider.setAttribute('class', 'divider')
+        const graphTitle = document.createElement('span')
+        graphTitle.setAttribute('class', 'graph-title')
+        graphTitle.innerText = this.title
 
-    headerContainer.appendChild(graphTitle)
-    headerContainer.appendChild(divider)
+        const divider = document.createElement('div')
+        divider.setAttribute('class', 'divider')
 
-    return headerContainer
-}
+        headerContainer.appendChild(graphTitle)
+        headerContainer.appendChild(divider)
 
-export function createGraphContainer(title, url, id){
-    const container = document.createElement('div')
-    container.setAttribute('class', 'graph-container')
-    container.setAttribute('id', id)
-    container.setAttribute('data-graph', id)
+        return headerContainer
+    }
+     
+    frame(){
+        const frame = document.createElement('iframe')
+        frame.setAttribute('src', this.url)
+        frame.setAttribute('title', this.title)
 
-    const header = createGraphHeader(title)
+        return frame
+    }
 
-    const graphFrame = document.createElement('iframe')
-    graphFrame.setAttribute('src', url)
-    graphFrame.setAttribute('title', title)
+    element(){
+        const container = document.createElement('div')
+        container.setAttribute('class', 'graph-container')
+        container.setAttribute('id', this.id)
+        container.setAttribute('data-graph', this.id)
 
-    container.appendChild(header)
-    container.appendChild(graphFrame)
+        container.appendChild(this.header())
+        container.appendChild(this.frame())
 
-    return container
-}
+        return container
+    }
 
-export default function fillGraphSection(obj){
-    const section = document.querySelector('[data-container="graphs"]')
-    const graphID = obj.title.toLowerCase().split(' ').join('-')
-    const graph = createGraphContainer(obj.title, obj.url, graphID)
-    
-    section.appendChild(graph)
+    activate(){
+        const element  = this.element()
 
-    return section
+        element.classList.add('active')
+        console.log(element)
+        return element
+    }
 }
