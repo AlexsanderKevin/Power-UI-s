@@ -1,9 +1,6 @@
-export default class Radio{
-    constructor(title, url){
-        this.title = title,
-        this.url = url,
-        this.id = title.toLowerCase().replace(' ', '-')
-    }
+import DOMelement from "./DOM-elements.js"
+
+export default class Radio extends DOMelement{
     label(){
         const label = document.createElement('label')
         label.setAttribute('for', `${this.id}-input`)
@@ -31,11 +28,5 @@ export default class Radio{
         container.appendChild(this.radio())
 
         return container
-    }
-
-    activate(){
-        const activated = this.element()
-        activated.classList.add('active')
-        return activated
     }
 }

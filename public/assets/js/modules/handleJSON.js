@@ -15,11 +15,7 @@ export default async function handleJSON(){
         const navContainer = document.querySelector('[data-container="links"]')
         
         if(index === 0){
-            // const firstLabel = nav.querySelector('label')
-            // firstLabel.classList.add('active')
             graphContainer.appendChild(graph.activate())
-            console.log(radio.element())
-            console.log(navContainer)
             navContainer.appendChild(radio.activate())
         }else{
             graphContainer.appendChild(graph.element())

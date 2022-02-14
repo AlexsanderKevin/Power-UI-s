@@ -1,10 +1,6 @@
-export default class Graph{
-    constructor(title, url){
-        this.title = title,
-        this.url = url,
-        this.id = title.toLowerCase().replace(' ', '-')
-    }
+import DOMelement from "./DOM-elements.js"
 
+export default class Graph extends DOMelement{
     header(){
         const graphTitle = document.createElement('span')
         graphTitle.setAttribute('class', 'graph-title')
@@ -35,11 +31,5 @@ export default class Graph{
         container.appendChild(this.header())
         container.appendChild(this.frame())
         return container
-    }
-
-    activate(){
-        const activatedElement  = this.element()
-        activatedElement.classList.add('active')
-        return activatedElement
     }
 }
