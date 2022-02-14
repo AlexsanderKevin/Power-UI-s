@@ -8,22 +8,18 @@ export default async function handleJSON(){
     const graphsArray = Array.from(graphsJSON)
 
     const containers = graphsArray.reduce( (containers, item, index) => {
-        // const nav = fillNavContainer(item)
         const radio = new Radio(item.title, item.url)
         const graph = new Graph(item.title, item.url)
-        const graphContainer = document.querySelector('section')
-        const navContainer = document.querySelector('[data-container="links"]')
-        
-        if(index === 0){
-            graphContainer.appendChild(graph.activate())
-            navContainer.appendChild(radio.activate())
-        }else{
-            graphContainer.appendChild(graph.element())
-            navContainer.appendChild(radio.element())
-        }
 
-        return containers = [navContainer, graphContainer]
+        return {
+            graphs: graph.appendTo('[data-container="graphs"]'),
+            nav: radio.appendTo('[data-container="links"]')
+        }
     },0)
 
-    initNav(containers[0], containers[1])
+    const {nav, graphs} = containers
+
+    nav.querySelector('[data-container="radio"]').classList.add('active')
+    graphs.querySelector('[data-graph]').classList.add('active')
+    initNav(nav, graphs)
 }

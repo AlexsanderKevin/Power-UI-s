@@ -9,8 +9,8 @@ export default class DOMelement{
         container.appendChild(this.element())
         return container
     }
-    activate(){
-        const activated = this.element()
+    activate(target){
+        const activated = this.element().querySelector(target)
         activated.classList.add('active')
         return activated
     }
