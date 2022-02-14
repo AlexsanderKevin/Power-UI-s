@@ -6,9 +6,6 @@ export default class Graph{
     }
 
     header(){
-        const headerContainer = document.createElement('div')
-        headerContainer.setAttribute('class', 'graph-header')
-
         const graphTitle = document.createElement('span')
         graphTitle.setAttribute('class', 'graph-title')
         graphTitle.innerText = this.title
@@ -16,9 +13,10 @@ export default class Graph{
         const divider = document.createElement('div')
         divider.setAttribute('class', 'divider')
 
+        const headerContainer = document.createElement('div')
+        headerContainer.setAttribute('class', 'graph-header')
         headerContainer.appendChild(graphTitle)
         headerContainer.appendChild(divider)
-
         return headerContainer
     }
      
@@ -26,7 +24,6 @@ export default class Graph{
         const frame = document.createElement('iframe')
         frame.setAttribute('src', this.url)
         frame.setAttribute('title', this.title)
-
         return frame
     }
 
@@ -35,18 +32,14 @@ export default class Graph{
         container.setAttribute('class', 'graph-container')
         container.setAttribute('id', this.id)
         container.setAttribute('data-graph', this.id)
-
         container.appendChild(this.header())
         container.appendChild(this.frame())
-
         return container
     }
 
     activate(){
-        const element  = this.element()
-
-        element.classList.add('active')
-        console.log(element)
-        return element
+        const activatedElement  = this.element()
+        activatedElement.classList.add('active')
+        return activatedElement
     }
 }

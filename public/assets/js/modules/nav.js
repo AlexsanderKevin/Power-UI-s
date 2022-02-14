@@ -6,7 +6,7 @@ export default function initNav(navMenu, graphSection){
         radios.forEach( radio => {
             const radioTarget = radio.getAttribute('data-target')
             const targetGraph = graphSection.querySelector(`#${radioTarget}`)
-            const radioLabel = radio.previousElementSibling
+            const radioLabel = radio.parentElement
 
             if( radio.checked ){
                 radioLabel.classList.add('active')
