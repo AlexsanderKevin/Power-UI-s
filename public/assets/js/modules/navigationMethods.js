@@ -1,30 +1,33 @@
-export function activateNext(container){
+export function activate(container, targetSibling){
     const actual = container.querySelector('.active')
     if(actual){
-        const next = actual.nextElementSibling
+        const target = actual[targetSibling]
 
-        if(next){
+        if(target){
             actual.classList.remove('active')
-            next.classList.add('active')
+            target.classList.add('active')
         }
     }
 }
-export function activatePrevious(container){
-    const actual = container.querySelector('.active')
-    if(actual){
-        const prev = actual.previousElementSibling
 
-        if(prev){
-            actual.classList.remove('active')
-            prev.classList.add('active')
+export function focusTarget(container, targetSibling){
+    const actual = container.querySelector('.focused')
+    if(actual){
+        const target = actual[targetSibling]
+
+        if(target){
+            actual.classList.remove('focused')
+            target.classList.add('focused')
         }
     }
 }
+
 export function focusIn(container){
     const actual = container.querySelector('.active')
     actual.classList.remove('active')
     actual.classList.add('focused')
 }
+
 export function focusOut(container){
     const actual = container.querySelector('.focused')
     actual.classList.remove('focused')

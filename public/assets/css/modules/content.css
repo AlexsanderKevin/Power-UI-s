@@ -2,7 +2,7 @@
     grid-column: 2/3;
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    gap: 90px 60px;
+    gap: 130px 60px;
     margin-top: 170px;
 }
 .graph-container{
@@ -25,7 +25,7 @@
 }
 .graph-header span{
     color: #c4c4c4;
-    font-family: monospace;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 25pt;
 }
 
