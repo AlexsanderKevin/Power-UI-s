@@ -15,10 +15,6 @@ export default class Graph extends DOMelement{
         headerContainer.appendChild(divider)
         return headerContainer
     }
-
-    buttonContainer(){
-
-    }
      
     frame(){
         const frame = document.createElement('iframe')
