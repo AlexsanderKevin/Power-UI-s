@@ -6,32 +6,29 @@ import keyboardEvents from './keyboardEvents.js'
 export default async function handleJSON(){
     const fetchGraphs = await fetch('json-database/graphics.json')
     const graphsJSON = await fetchGraphs.json()
-    const graphsArray = Array.from(graphsJSON)
+    const graphsArray = [...graphsJSON]
 
     const containers = graphsArray.reduce((containers, item) => {
         const radio = new Radio(item.title, item.url)
         const graph = new Graph(item.title, item.url)
 
-        return {
-            graphs: graph.appendTo('[data-container="graphs"]'),
-            nav: radio.appendTo('[data-container="links"]')
-        }
+        const graphSection = graph.appendTo('[data-container="graphs"]')
+        const linkContainer = radio.appendTo('[data-container="links"]')
+
+        const links = linkContainer.querySelectorAll('[data-container="radio"]')
+        const graphs = graphSection.querySelectorAll('[data-graph]')
+
+        containers = [[...links],[...graphs]]
+
+        return containers
     },0)
 
-    const {nav, graphs} = containers
+    const [links, graphs] = containers
 
-    nav.querySelector('[data-container="radio"]').classList.add('active')
-    graphs.querySelector('[data-graph]').classList.add('active')
-    initNav(nav, graphs)
+    links[0].classList.add('active')
+    graphs[0].classList.add('active')
+    initNav(links, graphs)
 
-    function handleKeydown({key}){
-        switch(key){
-            case 'ArrowUp': console.log('sima')
-            break
-            case 'ArrowDown': console.log('baxo')
-        }
-    }
-
-    keyboardEvents(nav)
+    keyboardEvents(links)
     keyboardEvents(graphs)
 }
